@@ -69,15 +69,22 @@ document.getElementById('mealForm').addEventListener('submit', async function(e)
     const data = await response.json();
 
     if (data.mealServiceDietInfo && data.mealServiceDietInfo[1].row.length > 0) {
-      const meal = data.mealServiceDietInfo[1].row[0];
-      resultDiv.innerHTML = `
-        <h2>${meal.MLSV_YMD} 급식메뉴</h2>
-        <p><strong>학교명:</strong> ${meal.SCHUL_NM}</p>
-        <p><strong>식사명:</strong> ${meal.MMEAL_SC_NM}</p>
-        <p><strong>메뉴:</strong><br>${meal.DDISH_NM.replace(/<br\/>/g, '<br>')}</p>
-        <p><strong>칼로리:</strong> ${meal.CAL_INFO}</p>
-        <p><strong>영양정보:</strong> ${meal.NTR_INFO}</p>
-      `;
+      const meals = data.mealServiceDietInfo[1].row;
+      let html = `<h2>${meals[0].MLSV_YMD} 급식메뉴</h2>`;
+      html += `<p><strong>학교명:</strong> ${meals[0].SCHUL_NM}</p>`;
+      html += '<div style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;">';
+      meals.forEach(meal => {
+        html += `
+          <div style="background:#fff8f0; border-radius:14px; box-shadow:0 2px 10px #ffe5d9; padding:18px 20px; min-width:220px; max-width:270px; margin-bottom:10px; flex:1 1 220px;">
+            <h3 style="color:#e76f51; margin:0 0 8px 0; font-size:1.15rem; text-align:center;">${meal.MMEAL_SC_NM}</h3>
+            <p><strong>메뉴:</strong><br>${meal.DDISH_NM.replace(/<br\/>/g, '<br>')}</p>
+            <p><strong>칼로리:</strong> ${meal.CAL_INFO}</p>
+            <p><strong>영양정보:</strong> ${meal.NTR_INFO}</p>
+          </div>
+        `;
+      });
+      html += '</div>';
+      resultDiv.innerHTML = html;
     } else {
       resultDiv.innerHTML = '해당 날짜의 급식 정보가 없습니다.';
     }
