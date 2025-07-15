@@ -1,0 +1,115 @@
+body {
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', Arial, sans-serif;
+  background: linear-gradient(135deg, #fffbe6 0%, #ffe5d9 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #e76f51;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 2px 8px #fff3e0;
+}
+
+form {
+  background: #fff8f0;
+  max-width: 420px;
+  margin: 30px auto 0 auto;
+  padding: 32px 28px 18px 28px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(231, 111, 81, 0.10), 0 1.5px 0 #ffe5d9;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #b25a2a;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input[type="text"], input[type="date"] {
+  padding: 10px 12px;
+  border: 1.5px solid #ffd6b0;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+  border: 1.5px solid #e76f51;
+  outline: none;
+}
+
+button {
+  padding: 12px 0;
+  background: linear-gradient(90deg, #e76f51 60%, #ffb366 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px 0 rgba(231, 111, 81, 0.10);
+  transition: background 0.2s, transform 0.1s;
+}
+button:hover {
+  background: linear-gradient(90deg, #ffb366 0%, #e76f51 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+#result {
+  max-width: 480px;
+  margin: 32px auto 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(231, 111, 81, 0.13), 0 2px 0 #ffe5d9;
+  padding: 32px 28px;
+  min-height: 60px;
+  font-size: 1.1rem;
+  color: #7c3a00;
+  line-height: 1.7;
+  position: relative;
+}
+#result h2 {
+  color: #e76f51;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#result p {
+  margin: 8px 0;
+  font-size: 1.08rem;
+}
+
+/* 음식 일러스트 느낌의 장식 */
+#result:before {
+  content: "🍽️";
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 4px #ffe5d9);
+}
+
+@media (max-width: 600px) {
+  form, #result {
+    max-width: 98vw;
+    padding: 18px 6vw;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
